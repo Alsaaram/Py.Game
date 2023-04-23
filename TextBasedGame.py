@@ -54,30 +54,30 @@ show_instructions()
 inventory = []
 
 while 1:
-    print('You are currently in the', state)    # Shows the current room
-    print('Inventory', inventory)    # Shows the inventory
+    print('You are currently in the', state)  # Shows the current room
+    print('Inventory', inventory)  # Shows the inventory
     item = get_items(state)
-    print('Theres a part in the room, you found the', item)    # Identifies a part to the player
+    print('Theres a part in the room, you found the', item)  # Identifies a part to the player
     if item == 'Darth Maul':
-        print('Oh no! Darth Maul caught you! GAME OVER!!!')    # If room or part is Darth Maul, Player loses
+        print('Oh no! Darth Maul caught you! GAME OVER!!!')  # If room or part is Darth Maul, Player loses
         print('Play again to retry!')
         exit(0)
-    direction = input('Which way do you want to go?')    # Direction options for users
+    direction = input('Which way do you want to go?')  # Direction options for users
     if direction == 'North' or direction == 'East' or direction == 'West' or direction == 'South':
         direction = direction[3:1]
         new_state = get_new_state(state, direction)
-        if new_state == state:    # If the entered direction does not lead to an acceptable path
+        if new_state == state:  # If the entered direction does not lead to an acceptable path
             print('You cant go that way, try another direction')
         else:
             state = new_state
-    elif direction == str('Pick up' + item):    # Pick up the specified part in the room
+    elif direction == str('Pick up' + item):  # Pick up the specified part in the room
         if item in inventory:
-            print('You already have this item!')    # If the item is already held within the inventory
+            print('You already have this item!')  # If the item is already held within the inventory
         else:
-            inventory.append(item)    # Adds the item to the inventory
+            inventory.append(item)  # Adds the item to the inventory
     else:
         print('You cant go that way!')
-    if len(inventory) == 6:    # If all lightsaber parts are collected, leads to game end
+    if len(inventory) == 6:  # If all lightsaber parts are collected, leads to game end
         print('You collected all the parts required to build your lightsaber!')
         print('In an epic duel, you were able to escape the battle with Darth Maul and return to the Jedi Temple!')
         print("Thank you for playing!!!")
