@@ -52,7 +52,7 @@ position = STARTING_POSITION
 
 
 # For movement around the map
-def get_new_state(state, direction):
+def get_new_position(new_position, direction):
     # What if the room or direction does not exist?
 
     # If you just return the existing position, how can the programme determine something went wrong?
@@ -60,7 +60,7 @@ def get_new_state(state, direction):
 
     # Two approaches here:
     # 1. Before calling this function, validate that the position is and direction are valid inputs. If not, ask user
-    #    for new ones.
+    #    for new ones. Or, use the validator inside this function.
     # 2. Validate inside this function and return a tuple. E.g. `return true, state`. Returning `true` will signal
     #    that it was valid request, and return the new state. Returning `false` will signal that it was invalid, and
     #    return the existing state. You will need to check for true and false after this is function is called. I don't
@@ -81,11 +81,11 @@ def get_new_state(state, direction):
     # You used `i` for looping. For arrays that is ok as it represents an index, but when looping over objects, you
     # should use `k` or `key`.
 
-    room = rooms.get(state)
+    room = rooms.get(new_position)
     if room and direction in room:
         return room[direction]
 
-    return state
+    return position
 
 
 def get_items(state):
@@ -116,7 +116,7 @@ while 1:
     direction = input('Which way do you want to go?')  # Direction options for users
     if direction == 'North' or direction == 'East' or direction == 'West' or direction == 'South':
         direction = direction[3:1]
-        new_state = get_new_state(position, direction)
+        new_state = get_new_position(position, direction)
         if new_state == position:  # If the entered direction does not lead to an acceptable path
             print('You cant go that way, try another direction')
         else:
