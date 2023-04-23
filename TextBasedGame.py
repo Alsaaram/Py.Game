@@ -23,7 +23,6 @@ rooms = {
     },
     'Abandoned Mining Area': {
         'South': 'Glowing Crystal Cavern',
-        'item': 'Keys'
     },
     'Underground Forest': {
         'South': 'Cave Start',
@@ -89,7 +88,39 @@ def get_new_position(new_position, direction):
 
 
 def get_room_items(state):
-    return rooms[state]['items']
+    # Original Code
+    # return rooms[state]['items']
+
+    # Few issues here:
+    # 'items' is not a valid key. It's 'item'. This is the reason behind the error below:
+
+    # Traceback (most recent call last):
+    #   File "/Users/ibrahim/Developer/TesCode/TextBasedGame.py", line 80, in <module>
+    #     item = get_items(state)
+    #   File "/Users/ibrahim/Developer/TesCode/TextBasedGame.py", line 62, in get_items
+    #     return rooms[state]['items']
+    # KeyError: 'items'
+
+    # If you run the code now, you won't get that error.
+
+    # If the items are defined in `room`, why are they also defined in `items`? Same for the other way round. Either or
+    # are valid approaches. If they're kept in `rooms`, the structure of the dict would need changing. E.g. right now
+    # for 'Abandoned Mining Area', you have the positions like every other room, but there is an `item` in there as
+    # well. This seems out of place. In that case, the structure should have been like this:
+    # `room { 'Abandoned Mining Area': { position: <positions here>, items: <items here> }}`
+
+    # FYI: I have removed any mention of items from `rooms`.
+
+    # Based on hwo your code is set up, I'm going with the items being in a different object.
+
+    if state in room_items:
+        return room_items.get(state)
+
+    # Handling the scenario where the room does not exist in `room_items`.
+    # Returning `None` makes sense because there are of course no item. A better approach would be to raise an error
+    # stating the room does not exist. For this, you would also need to check `rooms`. Alternatively, include all rooms
+    # in `room_items` and assign `None` where a room has no items (in which case the below line would not be needed).
+    return None
 
 
 # Instructions for the text based game
