@@ -1,5 +1,7 @@
 # Saram Nadeem Intro to Scripting
 
+STARTING_POSITION = "Cave Start"
+
 # Code below defines the rooms and which path each direction leads to when moving
 rooms = {
     'Cave Start': {
@@ -46,7 +48,7 @@ items = {
 }
 
 # Starting area
-state = 'Cave Start'
+state = STARTING_POSITION
 
 
 # For movement around the map
