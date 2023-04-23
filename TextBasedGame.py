@@ -84,8 +84,8 @@ def get_new_position(new_position, direction):
     room = rooms.get(new_position)
     if room and direction in room:
         return room[direction]
-
-    return position
+    
+    raise ValueError("Invalid room or direction")
 
 
 def get_items(state):
