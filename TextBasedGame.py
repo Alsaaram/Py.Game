@@ -2,15 +2,37 @@
 
 # Code below defines the rooms and which path each direction leads to when moving
 rooms = {
-    'Cave Start': {'South': 'Buried Temple', 'North': 'Underground Forest', 'East': 'Glowing Crystal Cavern',
-                   'West': 'Darth Mauls Room'},
-    'Buried Temple': {'North': 'Cave Start', 'East': 'Ritual Lair'},
-    'Ritual Lair': {'West': 'Buried Temple'},
-    'Glowing Crystal Cavern': {'North': 'Abandoned Mining Area', 'West': 'Cave Start'},
-    'Abandoned Mining Area': {'South': 'Glowing Crystal Cavern', 'item': 'Keys'},
-    'Underground Forest': {'South': 'Cave Start', 'East': 'Buried Ship'},
-    'Buried Ship': {'West': 'Underground Forest'},
-    'Darth Mauls Room': {'East': 'Cave Start'}
+    'Cave Start': {
+        'South': 'Buried Temple',
+        'North': 'Underground Forest',
+        'East': 'Glowing Crystal Cavern',
+        'West': 'Darth Mauls Room'
+    },
+    'Buried Temple': {
+        'North': 'Cave Start',
+        'East': 'Ritual Lair'
+    },
+    'Ritual Lair': {
+        'West': 'Buried Temple'
+    },
+    'Glowing Crystal Cavern': {
+        'North': 'Abandoned Mining Area',
+        'West': 'Cave Start'
+    },
+    'Abandoned Mining Area': {
+        'South': 'Glowing Crystal Cavern',
+        'item': 'Keys'
+    },
+    'Underground Forest': {
+        'South': 'Cave Start',
+        'East': 'Buried Ship'
+    },
+    'Buried Ship': {
+        'West': 'Underground Forest'
+    },
+    'Darth Mauls Room': {
+        'East': 'Cave Start'
+    }
 }
 
 # Creates and items and connects their locations to the places in the map
