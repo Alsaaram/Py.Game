@@ -38,7 +38,7 @@ rooms = {
 }
 
 # Creates and items and connects their locations to the places in the map
-items = {
+room_items = {
     'Buried Temple': 'Switch',
     'Ritual Lair': 'Bottom Hilt',
     'Glowing Crystal Cavern': 'Hilt Guard',
@@ -84,11 +84,11 @@ def get_new_position(new_position, direction):
     room = rooms.get(new_position)
     if room and direction in room:
         return room[direction]
-    
+
     raise ValueError("Invalid room or direction")
 
 
-def get_items(state):
+def get_room_items(state):
     return rooms[state]['items']
 
 
@@ -107,7 +107,7 @@ inventory = []
 while 1:
     print('You are currently in the', position)  # Shows the current room
     print('Inventory', inventory)  # Shows the inventory
-    item = get_items(position)
+    item = get_room_items(position)
     print('Theres a part in the room, you found the', item)  # Identifies a part to the player
     if item == 'Darth Maul':
         print('Oh no! Darth Maul caught you! GAME OVER!!!')  # If room or part is Darth Maul, Player loses
